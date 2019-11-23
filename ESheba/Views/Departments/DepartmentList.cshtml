@@ -1,0 +1,21 @@
+﻿
+@model IEnumerable<ESheba.Models.Department>
+@using ESheba.Models;
+@{
+    ViewBag.Title = "Domestic Workers";
+}
+
+<h2>Domestic Workers</h2>
+
+
+
+<div>
+    <ul>
+        @foreach (var d in Model)
+        {
+            <li>@Html.ActionLink(d.Name, "WorkerList", "Workers", new { Id = d.DepartmentId }, null)</li>
+        }
+    </ul>
+  
+</div>
+

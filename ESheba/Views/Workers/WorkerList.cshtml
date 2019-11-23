@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ESheba.Models.Worker>
+@using ESheba.Models;
+@{
+    ViewBag.Title = "Workers";
+}
+
+<h2>Workers List </h2>
+<div>
+    <ul>
+        @foreach (var w in Model)
+        {
+            <li>@Html.ActionLink(w.Name, "Details", new { Id = w.Id })</li>
+        }
+    </ul>
+    @Html.ActionLink("Back", "DepartmentList", "Departments")
+</div>
+
+
+
+@section scripts{
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+}
+<div>
+    <h2>By Using Ajax Worker Index  </h2>
+    <button class="btn btn-success" >
+        @Ajax.ActionLink("Worker Index ","Index",new AjaxOptions() {
+                        HttpMethod="Get",
+                        UpdateTargetId="divList",
+                        InsertionMode=InsertionMode.Replace
+                        })
+    </button>
+</div>
+<div id="divList">
+
+</div>
+
